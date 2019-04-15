@@ -1,22 +1,27 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 
 namespace CheeseAndBeerApp
 {
     class Program
     {
-        private static HttpClient client = new HttpClient();
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the cheese and beer zone! Please enter your favourite cheese to begin.");
-            ProcessBeers().Wait();
+            
+            Console.WriteLine("Welcome to the cheese and beer zone! Enter 'beers' to see some beers.");
+
+            var userInput = Console.ReadLine().ToLower();
+            if (userInput == "beers")
+            {
+                var client = new Client();
+                Console.WriteLine(client.GetBeers());
+            }
+
+            Console.ReadKey();
+
         }
 
-        private static async Task ProcessBeers()
-        {
 
-        }
+
     }
 }
